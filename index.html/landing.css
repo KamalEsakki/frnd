@@ -1,0 +1,97 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #cfe8ff, #ffffff);
+  color: #0a2942;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  /* fade-in animation for page */
+  opacity: 0;
+  animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+/* Sparkle background */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/stardust.png');
+  opacity: 0.3;
+  animation: sparkle 6s linear infinite;
+  z-index: -1;
+}
+
+/* Typing effect for heading */
+.container h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #0a2942; 
+  width: 0;
+  animation: typing 3s steps(30, end) forwards, blink 0.7s infinite;
+}
+
+/* Paragraph fade */
+.container p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+/* Floating + glowing image */
+.cover-img {
+  width: 280px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  animation: float 4s ease-in-out infinite, glow 2.5s infinite ease-in-out;
+}
+
+.cover-img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25), 0 0 25px rgba(0, 153, 255, 0.6);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 10px rgba(0,153,255,0.3), 0 0 20px rgba(0,153,255,0.2); }
+  50% { box-shadow: 0 0 25px rgba(0,153,255,0.6), 0 0 50px rgba(0,153,255,0.4); }
+  100% { box-shadow: 0 0 10px rgba(0,153,255,0.3), 0 0 20px rgba(0,153,255,0.2); }
+}
+
+@keyframes sparkle {
+  from { background-position: 0 0; }
+  to { background-position: 100% 100%; }
+}

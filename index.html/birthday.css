@@ -1,0 +1,328 @@
+/* ---------- Base + Theme ---------- */
+:root {
+  --primary-1: #e7f5ff;
+  --primary-2: #cfe8ff;
+  --primary-3: #a8d8ff;
+  --accent: #ffffff;
+  --ink: #0a2942;
+  --shadow: rgba(10, 41, 66, 0.15);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+  color: var(--ink);
+  background: linear-gradient(135deg, var(--primary-1), var(--primary-2) 40%, var(--accent) 100%);
+  overflow-x: hidden;
+}
+
+/* ---------- Confetti (Hearts, Cakes, Balloons) ---------- */
+.confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .25;
+  z-index: 0;
+}
+.confetti span {
+  position: absolute;
+  top: -10vh;
+  font-size: 22px;
+  animation: fall 12s linear infinite;
+}
+
+/* position + delays for 15 elements */
+.confetti span:nth-child(1){ left: 5%; animation-delay: 0s; }
+.confetti span:nth-child(2){ left: 12%; animation-delay: 1s; }
+.confetti span:nth-child(3){ left: 20%; animation-delay: 2s; }
+.confetti span:nth-child(4){ left: 28%; animation-delay: 3s; }
+.confetti span:nth-child(5){ left: 36%; animation-delay: 1.5s; }
+.confetti span:nth-child(6){ left: 44%; animation-delay: 0.5s; }
+.confetti span:nth-child(7){ left: 52%; animation-delay: 2.5s; }
+.confetti span:nth-child(8){ left: 60%; animation-delay: 3.5s; }
+.confetti span:nth-child(9){ left: 68%; animation-delay: 4.5s; }
+.confetti span:nth-child(10){ left: 76%; animation-delay: 5.5s; }
+.confetti span:nth-child(11){ left: 84%; animation-delay: 2.2s; }
+.confetti span:nth-child(12){ left: 90%; animation-delay: 3.8s; }
+.confetti span:nth-child(13){ left: 25%; animation-delay: 6s; }
+.confetti span:nth-child(14){ left: 50%; animation-delay: 7s; }
+.confetti span:nth-child(15){ left: 75%; animation-delay: 8s; }
+
+@keyframes fall {
+  0% { transform: translateY(-10vh) rotate(0deg); opacity: .9; }
+  50% { transform: translateY(50vh) rotate(180deg); opacity: .6; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: .3; }
+}
+
+/* ---------- Header ---------- */
+.hero {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 3rem 1rem 1rem;
+}
+.hero h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+.hero p {
+  margin: .5rem auto 0;
+  max-width: 60ch;
+  font-weight: 400;
+  opacity: .9;
+}
+
+/* ---------- Grid ---------- */
+.grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  padding: 2rem clamp(1rem, 4vw, 3rem);
+}
+
+.card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  filter: drop-shadow(0 6px 16px var(--shadow));
+  transform: translateY(0);
+  transition: transform .25s ease, filter .25s ease;
+}
+.card:hover { transform: translateY(-4px) rotate(-.5deg); filter: drop-shadow(0 12px 22px var(--shadow)); }
+
+.card figure {
+  margin: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--primary-3), var(--accent));
+  border: 2px solid rgba(255,255,255,.6);
+  position: relative;
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  filter: saturate(1.05) contrast(1.02);
+  transform: scale(1) translateZ(0);
+  transition: transform .35s ease;
+}
+.card:hover img { transform: scale(1.06); }
+
+.card figcaption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: .75rem 1rem;
+  background: linear-gradient(to top, rgba(255,255,255,.92), rgba(255,255,255,.6), transparent);
+  font-weight: 600;
+  text-align: center;
+  transform: translateY(0);
+}
+
+/* ---------- Modal (CSS-only :target) ---------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 41, 66, 0.45);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 10;
+  animation: fadeIn .25s ease forwards;
+}
+.modal:target { display: flex; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-card {
+  width: min(920px, 92vw);
+  background: linear-gradient(135deg, var(--accent), var(--primary-2));
+  border: 2px solid rgba(255,255,255,.8);
+  border-radius: 24px;
+  box-shadow: 0 24px 60px var(--shadow);
+  overflow: clip;
+  transform: translateY(12px) scale(.98);
+  animation: pop .28s ease forwards;
+}
+@keyframes pop {
+  to { transform: translateY(0) scale(1); }
+}
+
+.modal-card img {
+  display: block;
+  width: 100%;
+  max-height: 60vh;
+  object-fit: cover;
+}
+
+.quote {
+  margin: 0;
+  padding: 1.25rem 1.25rem 1.75rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+  color: var(--ink);
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  margin: .75rem;
+  right: 0;
+  top: 0;
+  text-decoration: none;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--ink);
+  background: rgba(255,255,255,.9);
+  border: 2px solid rgba(255,255,255,.8);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  transform: translate(10px, -10px);
+  transition: transform .2s ease, background .2s ease;
+}
+.close:hover { transform: translate(10px, -10px) scale(1.08); background: white; }
+
+/* ---------- Footer ---------- */
+.footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem 1rem 3rem;
+  opacity: .8;
+  font-weight: 600;
+}
+
+/* ---------- Responsive Tweaks ---------- */
+@media (max-width: 520px) {
+  .card img { height: 200px; }
+}
+/* ✨ Card base animations */
+.card {
+  display: block;
+  transform: scale(1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeInUp 1s ease forwards;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* 🎉 Hover effect */
+.card:hover {
+  transform: scale(1.08) rotate(2deg);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2), 0 0 20px rgba(255,182,193,0.6);
+}
+
+/* 💖 Click (active) effect */
+.card:active {
+  transform: scale(0.95);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* ✨ Fade-in with slight upward float */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 🎁 Floating subtle animation (cards keep moving slightly) */
+.card figure img {
+  display: block;
+  width: 100%;
+  border-radius: 12px;
+  animation: floaty 6s ease-in-out infinite;
+}
+
+@keyframes floaty {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+/* 🎶 Spotify Player Styling */
+.music-player {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+  padding: 10px;
+  background: linear-gradient(135deg, #87CEEB, #e0f7ff); /* skyblue gradient bg */
+  border-radius: 25px;
+  width: fit-content;
+  animation: fadeInMusic 2s ease forwards, pulseGlow 3s infinite ease-in-out;
+}
+
+.music-player iframe {
+  border: 3px solid #87CEEB; /* skyblue border */
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(135, 206, 235, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover bounce */
+.music-player iframe:hover {
+  transform: scale(1.05) rotate(-1deg);
+  box-shadow: 0 0 35px rgba(135, 206, 235, 0.9);
+}
+
+/* Animations */
+@keyframes fadeInMusic {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0%   { box-shadow: 0 0 15px rgba(135, 206, 235, 0.5); }
+  50%  { box-shadow: 0 0 35px rgba(135, 206, 235, 1); }
+  100% { box-shadow: 0 0 15px rgba(135, 206, 235, 0.5); }
+}
+/* 🌟 Glowing hover effect for photos */
+.card img {
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(135, 206, 250, 0.7); /* soft sky blue glow */
+}
+
+/* 🌟 Typewriter effect for quotes */
+.quote {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid rgba(255,255,255,0.75);
+  width: 0;
+  animation: typing 3.5s steps(40, end) forwards, blink 0.7s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: rgba(255,255,255,0.75); }
+}

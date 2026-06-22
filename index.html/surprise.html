@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Surprise💙</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="birthday.css"/>
+</head>
+<body>
+  <div class="confetti">
+  <span>❤️</span>
+  <span>🎂</span>
+  <span>🎈</span>
+  <span>❤️</span>
+  <span>🎂</span>
+  <span>🎈</span>
+  <span>❤️</span>
+  <span>🎂</span>
+  <span>🎈</span>
+  <span>❤️</span>
+  <span>🎂</span>
+  <span>🎈</span>
+  <span>❤️</span>
+  <span>🎂</span>
+  <span>🎈</span>
+</div>
+<script>
+document.querySelectorAll('.modal').forEach(modal => {
+  modal.addEventListener('click', function(e) {
+    if (e.target.classList.contains('close')) {
+      const quote = this.querySelector('.quote');
+      quote.style.animation = 'none';
+      setTimeout(() => {
+        quote.style.animation = '';
+      }, 10);
+    }
+  });
+});
+</script>
+<script>
+// Fireworks effect
+function createFirework() {
+  const colors = ["#ff69b4", "#ff1493", "#00c3ff", "#ffd700", "#7fff00", "#ff4500", "#8a2be2"];
+  const firework = document.createElement("div");
+  firework.className = "firework";
+  document.body.appendChild(firework);
+
+  // Random position near bottom
+  firework.style.left = Math.random() * window.innerWidth + "px";
+  firework.style.top = window.innerHeight - 80 + "px";
+
+  // Random color
+  firework.style.background = `radial-gradient(circle, ${colors[Math.floor(Math.random() * colors.length)]}, transparent)`;
+
+  // Remove after animation
+  setTimeout(() => {
+    firework.remove();
+  }, 2000);
+}
+
+// Detect when footer is visible & trigger fireworks
+const footer = document.querySelector(".footer");
+let fireworksActive = false;
+
+window.addEventListener("scroll", () => {
+  const rect = footer.getBoundingClientRect();
+  if (rect.top < window.innerHeight && rect.bottom >= 0 && !fireworksActive) {
+    fireworksActive = true;
+    setInterval(createFirework, 300); // continuous fireworks
+  }
+});
+</script>
+
+  <header class="hero">
+    <h1>This year is gonna be beautiful and awesome My Chellam 🥳💙</h1>
+    <p>Tap a photo to reveal my tiny love note<3</p>
+  </header>
+
+  <!-- Photo Grid -->
+  <main class="grid">
+    <!-- CARD 1 -->
+    <a class="card" href="#p1" aria-label="Open Photo 1">
+      <figure>
+        <img src="./img2.webp.jpg" alt="Our memory 1"/>
+              </figure>
+    </a>
+
+    <!-- CARD 2 -->
+    <a class="card" href="#p2" aria-label="Open Photo 2">
+      <figure>
+        <img src="./img3.webp.jpg" alt="Our memory 2"/>
+
+      </figure>
+    </a>
+
+    <!-- CARD 3 -->
+    <a class="card" href="#p3" aria-label="Open Photo 3">
+      <figure>
+        <img src="./img4.webp.jpg" alt="Our memory 3"/>
+
+      </figure>
+    </a>
+
+    <!-- CARD 4 -->
+    <a class="card" href="#p4" aria-label="Open Photo 4">
+      <figure>
+        <img src="./img5.webp.jpg" alt="Our memory 4"/>
+     
+      </figure>
+    </a>
+
+    <!-- CARD 5 -->
+    <a class="card" href="#p5" aria-label="Open Photo 5">
+      <figure>
+        <img src="./img6.webp.jpg" alt="Our memory 5"/>
+
+      </figure>
+    </a>
+
+      </main>
+
+  <!-- CSS-only Modals using :target (no JS) -->
+  <section>
+    <!-- MODAL 1 -->
+    <div class="modal" id="p1" aria-labelledby="q1">
+      <div class="modal-card">
+        <a class="close" href="#" aria-label="Close">×</a>
+        <img src="./WhatsApp Image 2026-06-22 at 11.06.51 PM.jpeg" alt="Our memory 1 large"/>
+        <h2 id="q1" class="quote">“பொட்டு வைத்தால் மெய் எழுத்து விட அழகு.”</h2>
+      </div>
+    </div>
+
+    <!-- MODAL 2 -->
+    <div class="modal" id="p2" aria-labelledby="q2">
+      <div class="modal-card">
+        <a class="close" href="#" aria-label="Close">×</a>
+        <img src="./WhatsApp Image 2026-06-22 at 11.06.50 PM.jpeg" alt="Our memory 2 large"/>
+        <h2 id="q2" class="quote">“Adorably cute, not kidding.”</h2>
+      </div>
+    </div>
+
+    <!-- MODAL 3 -->
+    <div class="modal" id="p3" aria-labelledby="q3">
+      <div class="modal-card">
+        <a class="close" href="#" aria-label="Close">×</a>
+        <img src="./WhatsApp Image 2026-06-22 at 11.06.49 PM.jpeg" alt="Our memory 3 large"/>
+        <h2 id="q3" class="quote">“You make My life beautiful ❤️✨.”</h2>
+      </div>
+    </div>
+
+    <!-- MODAL 4 -->
+    <div class="modal" id="p4" aria-labelledby="q4">
+      <div class="modal-card">
+        <a class="close" href="#" aria-label="Close">×</a>
+        <img src="./WhatsApp Image 2026-06-22 at 11.06.53 PM.jpeg" alt="Our memory 4 large"/>
+        <h2 id="q4" class="quote">“My smile begins with you ❤️😊.”</h2>
+      </div>
+    </div>
+
+      <!-- MODAL 5-->
+    <div class="modal" id="p5" aria-labelledby="q6">
+      <div class="modal-card">
+        <a class="close" href="#" aria-label="Close">×</a>
+        <img src="./WhatsApp Image 2026-06-22 at 11.07.27 PM.jpeg" alt="Our memory 6 large"/>
+        <h2 id="q6" class="quote">“Whatever happens, I'm Your's 😇😅🥰.”</h2>
+      </div>
+    </div>
+  </section>
+<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/45THyhjDbYhNU7bDrTTUK6?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  <footer class="footer">
+    <p>Your smile is all my happiness I need today and every day... MINE  ❤️</span></p>
+  </footer>
+
+  <!-- Helper: Replace the images in /img with your photos.
+       File structure:
+       /index.html
+       /birthday.css
+       /img/1.jpg ... /img/6.jpg
+  -->
+</body>
+</html>

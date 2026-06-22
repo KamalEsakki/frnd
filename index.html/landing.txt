@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #cfe8ff, #ffffff);
+  color: #0a2942;
+  text-align: center;
+
+  /* fade-in animation for page */
+  opacity: 0;
+  animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+.container h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+
+  /* slide-down effect */
+  animation: slideDown 1s ease-in-out forwards;
+}
+
+.container p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+
+  /* slight fade delay */
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+.cover-img {
+  width: 280px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: popIn 1.2s ease-in-out forwards;
+}
+
+.cover-img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
